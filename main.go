@@ -76,9 +76,7 @@ func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	body, _ := io.ReadAll(resp.Body)
 	var data map[string]any
 	json.Unmarshal(body, &data)
-	for key, row := range data {
-		fmt.Fprintf(w, "%v = %v\n", key, row)
-	}
+	fmt.Fprintf(w, "ID = %v, name = %v", data["id"], data["name"])
 }
 
 func getState() string {
